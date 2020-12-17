@@ -10,20 +10,15 @@
         <?php
 
 
-            if(isset($_POST["ArmeSubmit"]))
+            if(isset($_POST["MonstreSubmit"]))
             {
 
                 //on vérifie avant que les champs ne sont pas vide
-                if(!empty($_POST["ArmeType"]) && !empty($_POST["ArmeNom"]) && !empty($_POST["ArmeElement"]) && !empty($_POST["ArmeTranchant"]) && !empty($_POST["ArmeDegat"]) && !empty($_POST["ArmeRarete"]) && !empty($_POST["ArmeSceau"]) && !empty($_POST["ArmeAffinite"]))
+                if(!empty($_POST["MonstreNom"]) && !empty($_POST["MonstreFaiblesse"]) && !empty($_POST["MonstreElement"]))
                 {
-                    $ArmeType = $_POST["ArmeType"];
-                    $ArmeNom = $_POST["ArmeNom"];
-                    $ArmeElement = $_POST["ArmeElement"];
-                    $ArmeTranchant = $_POST["ArmeTranchant"];
-                    $ArmeDegat = $_POST["ArmeDegat"];
-                    $ArmeRarete = $_POST["ArmeRarete"];
-                    $ArmeSceaux = $_POST["ArmeSceau"];
-                    $ArmeAffinite = $_POST["ArmeAffinite"];
+                    $MonstreNom = $_POST["MonstreNom"];
+                    $MonstreFaiblesse = $_POST["MonstreFaiblesse"];
+                    $MonstreElement = $_POST["MonstreElement"];
                 }
 
 
@@ -31,22 +26,16 @@
                     {
                         $BasePDO = new PDO("mysql:host=192.168.64.116; dbname=Maxence_Final_MH; charset=utf8", "root", "root");
 
-                        $ArmeType = $_POST["ArmeType"];
-                        $ArmeNom = $_POST["ArmeNom"];
-                        $ArmeElement = $_POST["ArmeElement"];
-                        $ArmeTranchant = $_POST["ArmeTranchant"];
-                        $ArmeDegat = $_POST["ArmeDegat"];
-                        $ArmeRarete = $_POST["ArmeRarete"];
-                        $ArmeSceaux = $_POST["ArmeSceau"];
-                        $ArmeAffinite = $_POST["ArmeAffinite"];
-
+                        $MonstreNom = $_POST["MonstreNom"];
+                        $MonstreFaiblesse = $_POST["MonstreFaiblesse"];
+                        $MonstreElement = $_POST["MonstreElement"];
 
 
                         //on continue que si la base n'est pas false
                         if($BasePDO){        
-                                    echo "<p>Tentative de création d'Arme<p>";
+                                    echo "<p>Tentative de création de Monstre<p>";
                                     //creer la requête à partir de la génération php de phpMyAdmin
-                                    $req = "INSERT INTO `Arme`( `Type`, `Nom`, `Element`, `Tranchant`, `Degat`, `Rarete`, `Sceaux`, `Affinite`) VALUES ('".$ArmeType."','".$ArmeNom."','".$ArmeElement."','".$ArmeTranchant."','".$ArmeDegat."','".$ArmeRarete."','".$ArmeSceaux."','".$ArmeAffinite."')";
+                                    $req = "INSERT INTO `Monstre`( `Nom`, `Faiblesse`, `Element`) VALUES ('".$MonstreNom."','".$MonstreFaiblesse."','".$MonstreElement."')";
                                     $RequetStatement = $BasePDO->query($req);
                                     
                                     //on vérifie le code si le Statement n'est pas en false
@@ -56,7 +45,7 @@
                                         if(  $RequetStatement->errorCode()=='00000')
                                         {
                                             echo "Reussite de l'insertion : ";
-                                            echo "Vous avez entré les information a propos de ".$ArmeNom." , une arme de type ".$ArmeType." et d'élément ".$ArmeElement.".";
+                                            echo "Vous avez entré les information a propos de ".$MonstreeNom." , un monstre faible à ".$MonstreFaiblesse." et ayant l'élément ".$MonstreElement.".";
                                         }else{
                                             echo "Erreur N°".$RequetStatement->errorCode()." lors de l'insertion";
                                         }
@@ -75,7 +64,7 @@
 
 
 //DELETE
-if(isset($_POST["ArmeDeletSubmit"])){
+if(isset($_POST["MonstreDeletSubmit"])){
 
             try{
                 $BasePDO = new PDO("mysql:host=192.168.64.116; dbname=Maxence_Final_MH; charset=utf8", "root", "root");
@@ -84,7 +73,7 @@ if(isset($_POST["ArmeDeletSubmit"])){
                         //ici il va falloir récuper la liste de toute les checkbox checkées
                         //pour chaque checkbox checkée on récupérera l'id que l'on ajoutera aux id à supprimer
                         //la requete sera de type Delete from Medecin where IdMedecin in (1,3,8...,1343,...)
-                        foreach($_POST["IDArme"] as $check)
+                        foreach($_POST["IDMonstre"] as $check)
                         {
                             if( !isset($checkoptions) ){ 
                                 $checkoptions = $check; 
@@ -94,7 +83,7 @@ if(isset($_POST["ArmeDeletSubmit"])){
                             }
                         }
                         
-                        $req = "DELETE FROM `Arme` WHERE IDArme IN(".$checkoptions.")";
+                        $req = "DELETE FROM `Monstre` WHERE IDMonstre IN(".$checkoptions.")";
                         $RequetStatement = $BasePDO->query($req);
                         if($RequetStatement){
                             //la Bdd répond '00000' si c'est un succès
@@ -117,49 +106,24 @@ if(isset($_POST["ArmeDeletSubmit"])){
 
         <form action="" method="POST" class="form">
                 <div class="form">
-                    <label for="ArmeType">Type de l'arme : </label>
-                    <input type="text" name="ArmeType" id="ArmeType" required>
+                    <label for="MonstreType">Nom du Monstre : </label>
+                    <input type="text" name="MonstreType" id="MonstreNom" required>
                 </div>
 
                 <div class="form">
-                    <label for="ArmeNom">Nom de l'arme: </label>
-                    <input type="text" name="ArmeNom" id="ArmeNom" required>
+                    <label for="MonstreFaiblesse">Faiblesse du Monstre: </label>
+                    <input type="text" name="MonstreFaiblesse" id="MonstreFaiblesse" required>
                 </div>
 
                 <div class="form">
-                    <label for="ArmeElement">Element de l'arme: </label>
-                    <input type="text" name="ArmeElement" id="ArmeElement" required>
-                </div>
-
-                <div class="form">
-                    <label for="ArmeTranchant">Tranchant de l'arme: </label>
-                    <input type="text" name="ArmeTranchant" id="ArmeTranchant" required>
-                </div>
-
-                <div class="form">
-                    <label for="ArmeDegat">Dégats de l'arme: </label>
-                    <input type="number" name="ArmeDegat" id="ArmeDegat" required>
-                </div>
-
-                <div class="form">
-                    <label for="ArmeRarete">Rareté de l'arme: </label>
-                    <input type="number" name="ArmeRarete" id="ArmeRarete" required>
-                </div>
-
-                <div class="form">
-                    <label for="ArmeSceau">Présence / Puissance du Sceaux des Anciens de l'arme: </label>
-                    <input type="text" name="ArmeSceau" id="ArmeSceau" required>
-                </div>
-
-                <div class="form">
-                    <label for="ArmeAffinite">Affinité de l'arme: </label>
-                    <input type="number" name="ArmeAffinite" id="ArmeAffinite" required>
+                    <label for="MonstreElement">Element du Monstre: </label>
+                    <input type="text" name="MontreElement" id="MonstreElement" required>
                 </div>
 
 
 
                 <div class="form">
-                    <input type="submit" name="ArmeSubmit" value="Ajouter une Arme">
+                    <input type="submit" name="MonstreSubmit" value="Ajouter un Monstre">
                 </div>
             </form>
 
@@ -172,7 +136,7 @@ if(isset($_POST["ArmeDeletSubmit"])){
                     //on va afficher la liste des Medecins dans un tableau 
                     //et on va afficher une checkbox pour le supprimer
                     if($BasePDO){
-                        $req = "SELECT * FROM Arme";
+                        $req = "SELECT * FROM Monstre";
                         $RequetStatement = $BasePDO->query($req);
                         if($RequetStatement){
                             ?>
@@ -184,19 +148,15 @@ if(isset($_POST["ArmeDeletSubmit"])){
                                         <tr>
                                             <?php
                                             echo "<td>".$Tab[0]."</td>";    //ID
-                                            echo "<td>".$Tab[1]."</td>";    //Type
-                                            echo "<td>".$Tab[2]."</td>";    //Nom
+                                            echo "<td>".$Tab[1]."</td>";    //Nom
+                                            echo "<td>".$Tab[2]."</td>";    //Faiblesse
                                             echo "<td>".$Tab[3]."</td>";    //Element
-                                            echo "<td>".$Tab[4]."</td>";    //Tranchant
-                                            echo "<td>".$Tab[5]."</td>";    //Degats
-                                            echo "<td>".$Tab[6]."</td>";    //Rareté
-                                            echo "<td>".$Tab[7]."</td>";    //Sceaux 
-                                            echo "<td>".$Tab[8]."</td>";    //Affinite
+
 
                                             //pour la checkbox l'astuce est d'utiliser l'id du medecin comme id de checkox => id="Med_<?php echo $Tab[0]>"
                                             ?>
                                             <td>
-                                                <input type="checkbox" id="Arme_<?php echo $Tab[0]?>" name="IDArme[]" value="<?php echo $Tab[0]?>">
+                                                <input type="checkbox" id="Monstre_<?php echo $Tab[0]?>" name="IDMonstre[]" value="<?php echo $Tab[0]?>">
                                             </td>
                                         </tr>
                                         <?php
@@ -204,7 +164,7 @@ if(isset($_POST["ArmeDeletSubmit"])){
                                     ?>
                                 </table>
                                 <div class="form-example">
-                                    <input type="submit" name="ArmeDeletSubmit" value="Supprimer des Arme">
+                                    <input type="submit" name="MonstreDeletSubmit" value="Supprimer des Monstres">
                                 </div>
                             <form>
                     <?php
