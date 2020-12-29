@@ -17,3 +17,41 @@ body {
     top: 160px;
     margin-left: 30%;
 }
+#Header { /* Menus et titre supérieurs */
+    display: inline-block;
+    width: 100%;
+    opacity: 100%;
+    color: black;
+    font-size: 75%;
+}
+
+h1 {
+    font-size: 140%;
+    display: inline;
+}
+
+#menu {
+    display: inline-block;
+    width: 85%;
+}
+
+#menu,
+#menu li {
+    list-style: none;
+    text-align: center;
+}
+
+#menu li {
+    display: inline-block;
+    position: relative;
+    margin-left: 7%;
+}
+
+#menu a {
+    text-decoration: none;
+    color: black;
+}
+
+#menu a:hover {
+    color: white;
+}
