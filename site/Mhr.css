@@ -1,21 +1,9 @@
-label,
-footer {
-    font-family: sans-serif;
+body {
+    background-image: url("../Image/Parchemin.jpg");
+    font-size: 120%;
 }
-
-label {
-    font-size: 1rem;
-    padding-right: 10px;
-}
-
-select {
-    font-size: .9rem;
-    padding: 2px 5px;   
-}
-
-footer {
-    font-size: .8rem;
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
+#Texte{
+    position: relative;
+    text-align: center;
+    top: 140px;
 }

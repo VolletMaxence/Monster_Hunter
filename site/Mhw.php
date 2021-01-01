@@ -8,7 +8,7 @@ include("menu.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site Monster Hunter</title>
-    <link href="css.css" rel="stylesheet">
+    <link href="mhw.css" rel="stylesheet">
 </head>
 
 <body>

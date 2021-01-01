@@ -14,7 +14,7 @@
         </a>
     </div>
     <div id="Texte">
-    <p><b>Bienvenue sur ce site, veuillez selectionner le jeu qui vous interesse.</b></p>
+    <p><b>Bienvenue sur ce site, veuillez sélectionner le jeu qui vous intéresse.</b></p>
     </div>
     <div id="MHR">
     <a href="Mhr.php"><img src="../Image/Jaquette/MHR.png"/>

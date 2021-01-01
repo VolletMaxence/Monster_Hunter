@@ -28,14 +28,14 @@ h1 {
 #menu li {
     display: inline-block;
     position: relative;
-    margin-left: 7%;
+    margin-left: 6%;
 }
 
 #menu a {
     text-decoration: none;
-    color: black;
+    color: rgb(0, 0, 0);
 }
 
 #menu a:hover {
-    color: white;
+    color: rgb(255, 255, 255);
 }
