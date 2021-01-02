@@ -31,7 +31,7 @@ include("menu.php");
     <label for="site-search">Test de maxence</label>
 <input type="search" id="site-search" name="q"
        aria-label="Search through site content">
-<button>Rechercher</button>
+<button>Recherche</button>
 
 </body>
 

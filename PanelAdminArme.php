@@ -29,7 +29,7 @@
 
                     try
                     {
-                        $BasePDO = new PDO("mysql:host=192.168.64.116; dbname=Maxence_Final_MH; charset=utf8", "root", "root");
+                        $BasePDO = new PDO("mysql:host=127.0.0.1; dbname=Maxence_Final_MH; charset=utf8", "root", "root");
 
                         $ArmeType = $_POST["ArmeType"];
                         $ArmeNom = $_POST["ArmeNom"];
@@ -78,7 +78,7 @@
 if(isset($_POST["ArmeDeletSubmit"])){
 
             try{
-                $BasePDO = new PDO("mysql:host=192.168.64.116; dbname=Maxence_Final_MH; charset=utf8", "root", "root");
+                $BasePDO = new PDO("mysql:host=127.0.0.1; dbname=Maxence_Final_MH; charset=utf8", "root", "root");
 
                 echo "<p>Tentative de suppression</p>";
                         //ici il va falloir récuper la liste de toute les checkbox checkées
@@ -167,7 +167,7 @@ if(isset($_POST["ArmeDeletSubmit"])){
 
 <!-- check box pour delete -->
             <?php
-                $BasePDO = new PDO("mysql:host=192.168.64.116; dbname=Maxence_Final_MH; charset=utf8", "root", "root");
+                $BasePDO = new PDO("mysql:host=127.0.0.1; dbname=Maxence_Final_MH; charset=utf8", "root", "root");
 
                     //on va afficher la liste des Medecins dans un tableau 
                     //et on va afficher une checkbox pour le supprimer
