@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.6.6deb4+deb9u2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : sam. 02 jan. 2021 à 23:53
--- Version du serveur :  5.7.31
--- Version de PHP : 7.3.21
+-- Client :  localhost:3306
+-- Généré le :  Dim 03 Janvier 2021 à 11:25
+-- Version du serveur :  10.1.47-MariaDB-0+deb9u1
+-- Version de PHP :  7.0.33-0+deb9u10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -18,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `maxence_final_mh`
+-- Base de données :  `MH avec toute armes`
 --
 
 -- --------------------------------------------------------
@@ -27,9 +26,8 @@ SET time_zone = "+00:00";
 -- Structure de la table `arme`
 --
 
-DROP TABLE IF EXISTS `arme`;
-CREATE TABLE IF NOT EXISTS `arme` (
-  `IDArme` int(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `arme` (
+  `IDArme` int(20) NOT NULL,
   `Type` varchar(100) NOT NULL,
   `Nom` varchar(50) NOT NULL,
   `Element` varchar(25) NOT NULL,
@@ -37,15 +35,20 @@ CREATE TABLE IF NOT EXISTS `arme` (
   `Degat` int(11) NOT NULL,
   `Rarete` int(13) NOT NULL,
   `Sceaux` varchar(10) NOT NULL,
-  `Affinite` int(100) NOT NULL,
-  PRIMARY KEY (`IDArme`)
-) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8mb4;
+  `Affinite` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `arme`
+-- Contenu de la table `arme`
 --
 
 INSERT INTO `arme` (`IDArme`, `Type`, `Nom`, `Element`, `Tranchant`, `Degat`, `Rarete`, `Sceaux`, `Affinite`) VALUES
+(1, 'Double Lame', 'Supplice exorbitant', 'Dragon', 'Blanc', 406, 12, 'Fort', 0),
+(2, 'Double Lame', 'Blitz du despote', 'Foudre', 'Blanc', 364, 12, 'Aucun', 0),
+(3, 'Double Lame', 'Conflit wyverne', 'Feu', 'Violet', 378, 12, 'Aucun', 15),
+(29, 'Double Lame', 'Saint-Esprit de Guilde', 'Eau', 'Violet', 350, 11, 'Aucun', 0),
+(31, 'Double Lame', 'Blizzarioths montagneux', 'Glace', 'Blanc', 350, 11, 'Aucun', 25),
+(50, 'Double Lame', 'Bergel Vatra', 'Glace', 'Violet', 378, 11, 'Aucun', 15),
 (51, 'Double Lame', 'Déchireuses Anja II', 'Feu', 'Blanc', 378, 10, 'Aucun', -20),
 (52, 'Double Lame', 'Crime', 'Feu', 'Blanc', 322, 10, 'Aucun', 30),
 (53, 'Double Lame', 'Conflit Wyverne', 'Feu', 'Violet', 378, 12, 'Aucun', 15),
@@ -122,12 +125,9 @@ INSERT INTO `arme` (`IDArme`, `Type`, `Nom`, `Element`, `Tranchant`, `Degat`, `R
 -- Structure de la table `armemonstre`
 --
 
-DROP TABLE IF EXISTS `armemonstre`;
-CREATE TABLE IF NOT EXISTS `armemonstre` (
+CREATE TABLE `armemonstre` (
   `IDArme` int(255) NOT NULL,
-  `IDMonstre` int(50) NOT NULL,
-  KEY `TypeArme` (`IDArme`),
-  KEY `NomMonstre` (`IDMonstre`)
+  `IDMonstre` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -136,15 +136,13 @@ CREATE TABLE IF NOT EXISTS `armemonstre` (
 -- Structure de la table `element`
 --
 
-DROP TABLE IF EXISTS `element`;
-CREATE TABLE IF NOT EXISTS `element` (
-  `IDElement` int(10) NOT NULL AUTO_INCREMENT,
-  `Element` varchar(20) NOT NULL,
-  PRIMARY KEY (`IDElement`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `element` (
+  `IDElement` int(10) NOT NULL,
+  `Element` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `element`
+-- Contenu de la table `element`
 --
 
 INSERT INTO `element` (`IDElement`, `Element`) VALUES
@@ -160,18 +158,15 @@ INSERT INTO `element` (`IDElement`, `Element`) VALUES
 -- Structure de la table `monstre`
 --
 
-DROP TABLE IF EXISTS `monstre`;
-CREATE TABLE IF NOT EXISTS `monstre` (
-  `IDMonstre` int(100) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `monstre` (
+  `IDMonstre` int(100) NOT NULL,
   `Nom` varchar(100) NOT NULL,
   `Faiblesse` int(11) NOT NULL,
-  `Element` varchar(10) NOT NULL,
-  PRIMARY KEY (`IDMonstre`),
-  KEY `Faiblesse` (`Faiblesse`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4;
+  `Element` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `monstre`
+-- Contenu de la table `monstre`
 --
 
 INSERT INTO `monstre` (`IDMonstre`, `Nom`, `Faiblesse`, `Element`) VALUES
@@ -207,7 +202,56 @@ INSERT INTO `monstre` (`IDMonstre`, `Nom`, `Faiblesse`, `Element`) VALUES
 (45, 'Xeno jiiva', 1, 'Dragon');
 
 --
--- Contraintes pour les tables déchargées
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `arme`
+--
+ALTER TABLE `arme`
+  ADD PRIMARY KEY (`IDArme`);
+
+--
+-- Index pour la table `armemonstre`
+--
+ALTER TABLE `armemonstre`
+  ADD KEY `TypeArme` (`IDArme`),
+  ADD KEY `NomMonstre` (`IDMonstre`);
+
+--
+-- Index pour la table `element`
+--
+ALTER TABLE `element`
+  ADD PRIMARY KEY (`IDElement`);
+
+--
+-- Index pour la table `monstre`
+--
+ALTER TABLE `monstre`
+  ADD PRIMARY KEY (`IDMonstre`),
+  ADD KEY `Faiblesse` (`Faiblesse`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `arme`
+--
+ALTER TABLE `arme`
+  MODIFY `IDArme` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+--
+-- AUTO_INCREMENT pour la table `element`
+--
+ALTER TABLE `element`
+  MODIFY `IDElement` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT pour la table `monstre`
+--
+ALTER TABLE `monstre`
+  MODIFY `IDMonstre` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+--
+-- Contraintes pour les tables exportées
 --
 
 --
@@ -222,7 +266,6 @@ ALTER TABLE `armemonstre`
 --
 ALTER TABLE `monstre`
   ADD CONSTRAINT `Monstre_ibfk_1` FOREIGN KEY (`Faiblesse`) REFERENCES `element` (`IDElement`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
