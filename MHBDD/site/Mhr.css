@@ -1,0 +1,10 @@
+body {
+    background-image: url("../Image/safi.png");
+    background-size:cover;
+    font-size: 120%;
+}
+#Texte{
+    position: relative;
+    text-align: center;
+    top: 140px;
+}

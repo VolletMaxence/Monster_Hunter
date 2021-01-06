@@ -1,0 +1,25 @@
+body {
+    background-image: url("../Image/Parchemin.jpg");
+    background-size:cover;
+    font-size: 120%;
+}
+#Arme {
+    position: relative;
+    top: 20px;
+    margin-left: 30%
+}
+#Texte{
+    position: relative;
+    top: 80px;
+    margin-left:33%
+}
+#Monstre{
+    position: relative;
+    top: 140px;
+    margin-left: 30%;
+}
+#AM{
+    position: relative;
+    top: -500px;
+    margin-left: 5%;
+}
