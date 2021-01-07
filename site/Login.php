@@ -1,5 +1,6 @@
 <html>
     <head>
+        <link rel="icon" href="../Image/icone.ico" />
        <meta charset="utf-8">
     </head>
     <body>
