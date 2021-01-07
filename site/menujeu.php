@@ -16,7 +16,7 @@
         </a>
     </div>
     <div id="Texte">
-    <p><b>Bienvenue sur ce site, veuillez sélectionner le jeu qui vous intéresse.</b></p>
+    <p><strong>Bienvenue sur ce site, veuillez sélectionner le jeu qui vous intéresse.</strong></p>
     </div>
     <!-- Lien vers page Monster Hunter Rise -->
     <div id="MHR">

@@ -7,7 +7,7 @@ $monsters = $BDD->query("SELECT * FROM Monstre WHERE 1")
 <html lang="fr">
 
 <head>
-    <link rel="icon" href="../Image/icone.ico" />
+    <link rel="icon" href="../Image/icone.ico"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site Monster Hunter</title>
@@ -19,7 +19,7 @@ $monsters = $BDD->query("SELECT * FROM Monstre WHERE 1")
 <div id="Formulaire">
     <label>
     <div id="Texte">
-        <p><b>Sélectionner votre monstre</b></p>
+        <p><strong>Sélectionner votre monstre</strong></p>
         </div>
     </label>
     <!--list déroulante monstres basé sur les monstres présent en base-->
@@ -33,7 +33,7 @@ $monsters = $BDD->query("SELECT * FROM Monstre WHERE 1")
     </select>
     <label>
     <div id="Texte">
-        <p><b>Sélectionner votre arme</b></p>
+        <p><strong>Sélectionner votre arme</strong></p>
         </div>
     </label>
     <!--liste déroulante des type d'armes -->
@@ -43,7 +43,7 @@ $monsters = $BDD->query("SELECT * FROM Monstre WHERE 1")
     </select>
     <label>
     <div id="Texte">
-        <p><b>Effectuer La Recherche</b></p>
+        <p><strong>Effectuer La Recherche</strong></p>
         </div>
     </label>
     <div class="form-example">

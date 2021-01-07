@@ -2,9 +2,7 @@
 <html lang="fr">
 
 <head>
-    <link rel="icon" href="../Image/icone.ico" />
-
-
+    <link rel="icon" href="../Image/icone.ico"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site Monster Hunter</title>
@@ -18,7 +16,7 @@
         </a>
     </div>
     <div id="Texte">
-    <p><b>Bienvenue sur ce site, veuillez sélectionner le jeu qui vous intéresse.</b></p>
+    <p><strong>Bienvenue sur ce site, veuillez sélectionner le jeu qui vous intéresse.</strong></p>
     </div>
     <div id="MHR">
     <!-- Lien page Monster Hunter Rise -->

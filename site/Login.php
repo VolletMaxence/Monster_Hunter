@@ -10,10 +10,10 @@
             <form method="POST">
                 <h1>Connexion</h1>
                 
-                <label><b>Nom d'utilisateur</b></label>
+                <label><strong>Nom d'utilisateur</strong></label>
                 <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
 
-                <label><b>Mot de passe</b></label>
+                <label><strong>Mot de passe</strong></label>
                 <input type="password" placeholder="Entrer le mot de passe" name="password" required>
 
                 <input type="submit" name='submit' value='LOGIN' >

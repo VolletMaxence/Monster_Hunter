@@ -17,7 +17,7 @@
     </div>
     <!-- Lien Panel Admin  Monstre-->
     <div id="Texte">
-    <p><b>Selectionner le tableau à modifier</b></p>
+    <p><strong>Selectionner le tableau à modifier</strong></p>
     </div>
     <div id="Monstre">
     <a href="PanelAdminMonstre.php"><img src="../Image/Admin/Monstre.jpg"/>
