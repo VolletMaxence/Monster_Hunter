@@ -2,6 +2,7 @@
     <head>
         <link rel="icon" href="../Image/icone.ico" />
        <meta charset="utf-8">
+       <link href="Admin.css" rel="stylesheet">
     </head>
     <body>
         <div id="container">

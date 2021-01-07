@@ -2,6 +2,7 @@
     <head>
         <link rel="icon" href="../Image/icone.ico" />
         <meta charset='utf-8'>
+        <link href="Admin.css" rel="stylesheet">
     </head>
     <body>
         
@@ -118,7 +119,7 @@ if(isset($_POST["MonstreDeletSubmit"])){
 
                 <div class="form">
                     <label for="MonstreElement">Element du Monstre: </label>
-                    <input type="text" name="MonstreElement" id="MonstreElement" required>
+                    <input type="text" max="10" name="MonstreElement" id="MonstreElement" required>
                 </div>
 
 
