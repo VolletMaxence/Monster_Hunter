@@ -27,14 +27,17 @@
 
     if (isset($_POST["submit"])) {
         if((!empty($_POST['password'])) && (!empty($_POST['username']))){
-            $stmt = $dbh->prepare("SELECT * FROM utilisateur WHERE nom_utilisateur = ?");
-            $stmt->execute(array($_POST['username']));
+            //requete préparé
+            $stmt = $dbh->prepare("SELECT * FROM utilisateur WHERE nom_utilisateur = ? AND mot_de_passe = ?");
+            $stmt->execute(array($_POST['username'], $_POST['password']));
             $stmt = $stmt->fetch();
 
+            //si ce n'est pas le bon MdP :
             if (!$stmt) {
                 echo "'Mauvais nom d'utilisateur ou mot de passe' ";
             } else {
 
+            //sinon, redirigé l'utilisateur a la page "PanelAdmin.php"
                 if ($_POST['password'] == $stmt['mot_de_passe']) {
                     session_start();
                     $_SESSION['nom_utilisateur'] = $stmt['nom_utilisateur'];

@@ -104,6 +104,7 @@ if(isset($_POST["MonstreDeletSubmit"])){
 }
         ?>
 
+        <!-- Formulaire pour rentrer nouvele ralation (tout de même conseiller de le faire depuis la base SQL) -->
         <form action="" method="POST" class="form">
                 <div class="form">
                     <label for="MonstreType">Nom du Monstre : </label>
@@ -146,6 +147,8 @@ if(isset($_POST["MonstreDeletSubmit"])){
                                         ?>
                                         <tr>
                                             <?php
+                                            // afficher info sur les relation présente en base :
+
                                             echo "<td>".$Tab[0]."</td>";    //ID
                                             echo "<td>".$Tab[1]."</td>";    //Nom
                                             echo "<td>".$Tab[2]."</td>";    //Faiblesse

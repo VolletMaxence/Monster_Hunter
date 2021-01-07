@@ -12,8 +12,9 @@ include("menu.php");
 </head>
 
 <body>
+<!-- Jeu pas encore sortit, lien vers le site officiel du jeu pour plus d'information-->
 <div id="Texte"><p><b>Monter Hunter Rise est un jeu prévu pour le 26 mars 2021.</b></p>
-<p><b>Des Informations sont disponibles sur le site de <a href="https://www.monsterhunter.com/rise/fr/"><b>Capcom.</b></a></b></div>
+<p><b>Des Informations sont disponibles sur le <a href="https://www.monsterhunter.com/rise/fr/"> site de <b>Capcom.</b></a></b></div>
 </body>
 
 </html>

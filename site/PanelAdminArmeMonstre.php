@@ -81,7 +81,7 @@ if(isset($_POST["RelationDeletSubmit"])){
                                 $checkoptions .= ",".$check; 
                             }
                         }
-                        
+                         
                         $req = "DELETE FROM `armemonstre` WHERE IDRelation IN(".$checkoptions.")";
                         $RequetStatement = $BasePDO->query($req);
                         if($RequetStatement){
@@ -103,6 +103,7 @@ if(isset($_POST["RelationDeletSubmit"])){
 }
         ?>
 
+        <!-- Formulaire pour ajouter une arme -->
         <form action="" method="POST" class="form">
                 <div class="form">
                     <label for="IDArme">ID Arme : </label>
@@ -139,6 +140,8 @@ if(isset($_POST["RelationDeletSubmit"])){
                                         ?>
                                         <tr>
                                             <?php
+                                            //info sur les armes présentent en base :
+
                                             echo "<td>".$Tab[0]."</td>";    //IDRelation
                                             echo "<td>".$Tab[1]."</td>";    //IDArme
                                             echo "<td>".$Tab[2]."</td>";    //IDMonstre

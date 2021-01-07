@@ -21,10 +21,11 @@ $monsters = $BDD->query("SELECT * FROM Monstre WHERE 1")
         <p><b>Sélectionner votre monstre</b></p>
         </div>
     </label>
-    <!--list déroulante monstres-->
+    <!--list déroulante monstres basé sur les monstres présent en base-->
     <select name="Monstre">
 
         <?php foreach ($monsters as $monsters) {
+        //récuperer la liste des monstre depuis la base : + simple 
         echo "<option value='".$monsters["Nom"]."'>".$monsters["Nom"]."</option>";
         } ?>
 

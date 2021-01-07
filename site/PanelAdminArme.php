@@ -81,7 +81,7 @@ if(isset($_POST["ArmeDeletSubmit"])){
                 $BasePDO = new PDO("mysql:host=192.168.64.116; dbname=Maxence_Final_MH; charset=utf8", "root", "root");
 
                 echo "<p>Tentative de suppression</p>";
-                        //ChecjBox
+                        //CheckBox
                         foreach($_POST["IDArme"] as $check)
                         {
                             if( !isset($checkoptions) ){ 
@@ -114,6 +114,7 @@ if(isset($_POST["ArmeDeletSubmit"])){
 }
         ?>
 
+        <!-- Formulaire pour rentrer nouvele arme -->
         <form action="" method="POST" class="form">
                 <div class="form">
                     <label for="ArmeType">Type de l'arme : </label>
@@ -182,6 +183,8 @@ if(isset($_POST["ArmeDeletSubmit"])){
                                         ?>
                                         <tr>
                                             <?php
+                                            //affichage des infos des armes présentent en base 
+ 
                                             echo "<td>".$Tab[0]."</td>";    //ID
                                             echo "<td>".$Tab[1]."</td>";    //Type
                                             echo "<td>".$Tab[2]."</td>";    //Nom
@@ -207,11 +210,9 @@ if(isset($_POST["ArmeDeletSubmit"])){
                             <form>
                             <?php
 
-}
+                        }
 
-}
-
-
+                    }
 
 ?>
 
