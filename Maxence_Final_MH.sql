@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : Dim 20 déc. 2020 à 18:34
+-- Généré le : Dim 20 déc. 2020 à 20:28
 -- Version du serveur :  10.1.47-MariaDB-0+deb9u1
 -- Version de PHP : 7.0.33-0+deb9u10
 
@@ -559,20 +559,6 @@ INSERT INTO `armemonstre` (`IDRelation`, `IDArme`, `IDMonstre`) VALUES
 (457, 111, 42),
 (458, 112, 42),
 (459, 113, 42),
-(460, 50, 43),
-(461, 63, 43),
-(462, 64, 43),
-(463, 65, 43),
-(464, 66, 43),
-(465, 68, 43),
-(466, 69, 43),
-(467, 70, 43),
-(468, 102, 43),
-(469, 103, 43),
-(470, 104, 43),
-(471, 105, 43),
-(472, 106, 43),
-(473, 107, 43),
 (474, 51, 44),
 (475, 52, 44),
 (476, 53, 44),
@@ -724,7 +710,7 @@ ALTER TABLE `Monstre`
 -- AUTO_INCREMENT pour la table `Arme`
 --
 ALTER TABLE `Arme`
-  MODIFY `IDArme` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `IDArme` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT pour la table `armemonstre`
@@ -742,7 +728,7 @@ ALTER TABLE `Element`
 -- AUTO_INCREMENT pour la table `Monstre`
 --
 ALTER TABLE `Monstre`
-  MODIFY `IDMonstre` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `IDMonstre` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- Contraintes pour les tables déchargées
