@@ -93,7 +93,8 @@ if(isset($_POST["MonstreDeletSubmit"])){
                                 echo "<strong> Erreur </strong> N°".$RequetStatement->errorCode()." lors de la suppression";
                             }
                         }else{
-                            echo "<strong> Erreur </strong> dans le format de la requête";
+                            echo "<strong> Erreur </strong> dans le format de la requête.";
+                            echo " Veuillez également vérifié que ces monstres ne sont pas présents dans une ou plusieur relation au <strong> <a href='PanelAdminArmeMonstre.php'> panel admin </a> prévu à cet effet .";
                         }
 
     

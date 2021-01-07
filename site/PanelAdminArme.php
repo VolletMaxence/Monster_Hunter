@@ -102,8 +102,8 @@ if(isset($_POST["ArmeDeletSubmit"])){
                                 echo "<strong> Erreur </strong> N°".$RequetStatement->errorCode()." lors de la suppression.";
                             }
                         }else{
-                            echo "<strong> Erreur </strong> dans le format de la requête. ";
-                            echo " Veuillez également vérifié que ces armes ne sont pas présentes dans une relation ou plusieur relation au <strong> panel admin prévu à cet effet </strong>.";
+                            echo "<strong> Erreur </strong> dans le format de la requête.";
+                            echo " Veuillez également vérifié que ces armes ne sont pas présentes dans une ou plusieur relation au <strong> <a href='PanelAdminArmeMonstre.php'> panel admin </a> prévu à cet effet </strong>.";
                         }
 
     
