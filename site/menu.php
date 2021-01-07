@@ -4,10 +4,10 @@
         <li id="menu">
             <ul>
             <!--Menu pour une meilleur navigation-->
-                <li><a href="Index.php"><b>Menu</b></a></li>
+                <li><a href="index.php"><b>Menu</b></a></li>
                 <li><a href="Mhw.php"><b>Monster Hunter World</b></a></li>
                 <li><a href="mhr.php"><b>Monster Hunter Rise</b></a></li>
                 <li><a href="Login.php"><b>Admin</b></a></li>
             </ul>
         </li>
-    </div> 
+    </div>  
