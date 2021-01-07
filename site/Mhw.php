@@ -1,5 +1,7 @@
 <?php
 include("menu.php");
+$BDD = new PDO("mysql:host=192.168.64.116; dbname=Maxence_Final_MH; charset=utf8", "root", "root");
+$monsters = $BDD->query("SELECT * FROM Monstre WHERE 1")
             ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -12,27 +14,91 @@ include("menu.php");
 </head>
 
 <body>
-    <select id="Monstre">
-        <option value="valeur1" selected></option>
-        <option value="valeur2">Grand Jagras</option>
-        <option value="valeur3">Anjanath</option>
-        <option value="valeur2">Vieux Leshen</option>
-        <option value="valeur2">Leshen</option>
-        <option value="valeur3">Rathalos</option>
-    </select>
-    <select id="Arme">
-        <option value="valeur1" selected></option>
-        <option value="valeur2">Arme 1</option>
-        <option value="valeur3">Arme 2</option>
-        <option value="valeur2">Arme 3</option>
-        <option value="valeur2">Arme 4</option>
-        <option value="valeur3">Arme 5</option>
-    </select>
-    <label for="site-search">Test de maxence</label>
-<input type="search" id="site-search" name="q"
-       aria-label="Search through site content">
-<button>Recherche</button>
+<form action="" method="post">
+<div id="Formulaire">
+    <label>
+    <div id="Texte">
+        <p><b>Sélectionner votre monstre</b></p>
+        </div>
+    </label>
+    <!--list déroulante monstres-->
+    <select name="Monstre">
 
+        <?php foreach ($monsters as $monsters) {
+        echo "<option value='".$monsters["Nom"]."'>".$monsters["Nom"]."</option>";
+        } ?>
+
+    </select>
+    <label>
+    <div id="Texte">
+        <p><b>Sélectionner votre arme</b></p>
+        </div>
+    </label>
+    <!--liste déroulante des type d'armes -->
+    <select name="Arme">
+        <option value="Double Lame">Double Lame</option>
+        <option value="Morpho-hache">Morpho Hache</option>
+    </select>
+    <label>
+    <div id="Texte">
+        <p><b>Effectuer La Recherche</b></p>
+        </div>
+    </label>
+    <div class="form-example">
+
+        <input type="submit" name="Recherche" value="Rechercher MatchUp">
+    </form>
+    </div>
+
+
+
+    
+    <?php
+       
+
+        //recherche du MatchUp :
+
+        //si le boutton est pressé :
+        if($BDD){
+            if(isset($_POST["Recherche"])){
+// SELECT armemonstre.IDArme FROM armemonstre, Arme, Monstre WHERE armemonstre.IDArme = Arme.IDArme AND armemonstre.IDMonstre = Monstre.IDMonstre AND Monstre.Nom = "Grand Jagras" AND Arme.Type = "Double Lame"
+                // Requete SQL prepare
+                $req = "SELECT * FROM Arme, Monstre LEFT JOIN armemonstre ON armemonstre.IDArme WHERE armemonstre.IDArme = Arme.IDArme AND armemonstre.IDMonstre = Monstre.IDMonstre AND Monstre.Nom = ? AND Arme.Type = ?";
+
+                $stmt = $BDD->prepare($req);
+                $stmt->execute(array($_POST["Monstre"], $_POST["Arme"]));
+
+                $i=1;
+                //affichage des armes
+                foreach ($stmt as $arme ) {
+                    echo "<strong> <u> Voici la ".$i."e arme que nous vous conseillons : </u> </strong>";
+                    echo "<p>";
+                    echo "<i>".$arme[2]. "</i> || ";
+                    echo "<strong> Elément : </strong>".$arme[3]. " || ";
+                    echo "<strong> Tranchant : </strong>".$arme[4]. " || ";
+                    echo $arme[5]. " || ";
+                    echo "<strong> Rareté : </strong>".$arme[6]. " || ";
+                    echo "<strong> Sceaux des Anciens : </strong>".$arme[7]. " || ";
+                    echo "<strong> Affinité : </strong>".$arme[8];
+                    echo "<p>";
+                    $i = $i + 1;
+                }
+            
+                
+                
+
+                
+                $table_Arme = array();
+                $table_Monstre = array();
+
+                
+                //
+            }
+
+        }
+            
+        
+    ?>
 </body>
 
 </html>

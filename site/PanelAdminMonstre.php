@@ -8,6 +8,8 @@
         
         
         <?php
+            include("MenuAdmin.php");
+
 
             if(isset($_POST["MonstreSubmit"]))
             {

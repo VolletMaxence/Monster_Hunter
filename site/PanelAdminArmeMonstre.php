@@ -8,17 +8,17 @@
         
         
         <?php
+            include("MenuAdmin.php");
 
-
-            if(isset($_POST["MonstreSubmit"]))
+            if(isset($_POST["RelationSubmit"]))
             {
 
                 //on vérifie avant que les champs ne sont pas vide
-                if(!empty($_POST["MonstreNom"]) && !empty($_POST["MonstreFaiblesse"]) && !empty($_POST["MonstreElement"]))
+                if(!empty($_POST["IDArme"]) && !empty($_POST["IDMonstre"]))
                 {
-                    $MonstreNom = $_POST["MonstreNom"];
-                    $MonstreFaiblesse = $_POST["MonstreFaiblesse"];
-                    $MonstreElement = $_POST["MonstreElement"];
+                    $IDRelation = $_POST["IDRelation"];
+                    $IDArme = $_POST["IDArme"];
+                    $IDMonstre = $_POST["IDMonstre"];
                 }
 
 
@@ -26,16 +26,16 @@
                     {
                         $BasePDO = new PDO("mysql:host=192.168.64.116; dbname=Maxence_Final_MH; charset=utf8", "root", "root");
 
-                        $MonstreNom = $_POST["MonstreNom"];
-                        $MonstreFaiblesse = $_POST["MonstreFaiblesse"];
-                        $MonstreElement = $_POST["MonstreElement"];
+                        $IDRelation = $_POST["IDRelation"];
+                        $IDArme = $_POST["IDArme"];
+                        $IDMonstre = $_POST["IDMonstre"];
 
 
                         //on continue que si la base n'est pas false
                         if($BasePDO){        
-                                    echo "<p>Tentative de création de Monstre<p>";
+                                    echo "<p>Tentative de création d'une relation :<p>";
                                     //creer la requête à partir de la génération php de phpMyAdmin
-                                    $req = "INSERT INTO `Monstre`( `Nom`, `Faiblesse`, `Element`) VALUES ('".$MonstreNom."','".$MonstreFaiblesse."','".$MonstreElement."')";
+                                    $req = "INSERT INTO `armemonstre`( `IDArme`, `IDMonstre`) VALUES ('".$IDArme."','".$IDMonstre."')";
                                     $RequetStatement = $BasePDO->query($req);
                                     
                                     //on vérifie le code si le Statement n'est pas en false
@@ -45,12 +45,12 @@
                                         if(  $RequetStatement->errorCode()=='00000')
                                         {
                                             echo "Reussite de l'insertion : ";
-                                            echo "Vous avez entré les information a propos de ".$MonstreeNom." , un monstre faible à ".$MonstreFaiblesse." et ayant l'élément ".$MonstreElement.".";
+                                            echo "Vous avez entré la relations Arme / Monstre comportant respectivement l'ID ".$IDArme." , et l'ID ".$IDMonstre."";
                                         }else{
-                                            echo "Erreur N°".$RequetStatement->errorCode()." lors de l'insertion";
+                                            echo "<strong> Erreur </strong> N°".$RequetStatement->errorCode()." lors de l'insertion";
                                         }
                                     }else{
-                                        echo "Erreur dans le format de la requête";
+                                        echo "<strong> Erreur </strong> dans le format de la requête";
                                     }
                                         
                             
@@ -64,7 +64,7 @@
 
 
 //DELETE
-if(isset($_POST["MonstreDeletSubmit"])){
+if(isset($_POST["RelationDeletSubmit"])){
 
             try{
                 $BasePDO = new PDO("mysql:host=192.168.64.116; dbname=Maxence_Final_MH; charset=utf8", "root", "root");
@@ -72,8 +72,7 @@ if(isset($_POST["MonstreDeletSubmit"])){
                 echo "<p>Tentative de suppression</p>";
                         //ici il va falloir récuper la liste de toute les checkbox checkées
                         //pour chaque checkbox checkée on récupérera l'id que l'on ajoutera aux id à supprimer
-                        //la requete sera de type Delete from Medecin where IdMedecin in (1,3,8...,1343,...)
-                        foreach($_POST["IDMonstre"] as $check)
+                        foreach($_POST["IDRelation"] as $check)
                         {
                             if( !isset($checkoptions) ){ 
                                 $checkoptions = $check; 
@@ -83,18 +82,18 @@ if(isset($_POST["MonstreDeletSubmit"])){
                             }
                         }
                         
-                        $req = "DELETE FROM `Monstre` WHERE IDMonstre IN(".$checkoptions.")";
+                        $req = "DELETE FROM `armemonstre` WHERE IDRelation IN(".$checkoptions.")";
                         $RequetStatement = $BasePDO->query($req);
                         if($RequetStatement){
-                            //la Bdd répond '00000' si c'est un succès
+                            //'00000' = succès
                             if(  $RequetStatement->errorCode()=='00000'){
                                 echo "Reussite de la suppression: ";
-                                echo "les id  :".$checkoptions. " on été supprimé";
+                                echo "Les relations numéro :".$checkoptions. " on été supprimé";
                             }else{
-                                echo "Erreur N°".$RequetStatement->errorCode()." lors de la suppression";
+                                echo "<strong> Erreur : </strong> N°".$RequetStatement->errorCode()." lors de la suppression";
                             }
                         }else{
-                            echo "Erreur dans le format de la requête";
+                            echo "<strong> Erreur </strong> dans le format de la requête";
                         }
 
     
@@ -106,24 +105,18 @@ if(isset($_POST["MonstreDeletSubmit"])){
 
         <form action="" method="POST" class="form">
                 <div class="form">
-                    <label for="MonstreType">Nom du Monstre : </label>
-                    <input type="text" name="MonstreType" id="MonstreNom" required>
+                    <label for="IDArme">ID Arme : </label>
+                    <input type="text" name="IDArme" id="IDArme" required>
                 </div>
 
                 <div class="form">
-                    <label for="MonstreFaiblesse">Faiblesse du Monstre: </label>
-                    <input type="text" name="MonstreFaiblesse" id="MonstreFaiblesse" required>
-                </div>
-
-                <div class="form">
-                    <label for="MonstreElement">Element du Monstre: </label>
-                    <input type="text" name="MontreElement" id="MonstreElement" required>
+                    <label for="IDMonstre">ID Monstre: </label>
+                    <input type="text" name="IDMonstre" id="IDMonstre" required>
                 </div>
 
 
-
                 <div class="form">
-                    <input type="submit" name="MonstreSubmit" value="Ajouter un Monstre">
+                    <input type="submit" name="RelationSubmit" value="Ajouter une relation">
                 </div>
             </form>
 
@@ -133,10 +126,9 @@ if(isset($_POST["MonstreDeletSubmit"])){
             <?php
                 $BasePDO = new PDO("mysql:host=192.168.64.116; dbname=Maxence_Final_MH; charset=utf8", "root", "root");
 
-                    //on va afficher la liste des Medecins dans un tableau 
-                    //et on va afficher une checkbox pour le supprimer
+                    //liste Monstre
                     if($BasePDO){
-                        $req = "SELECT * FROM Monstre";
+                        $req = "SELECT * FROM armemonstre";
                         $RequetStatement = $BasePDO->query($req);
                         if($RequetStatement){
                             ?>
@@ -147,16 +139,15 @@ if(isset($_POST["MonstreDeletSubmit"])){
                                         ?>
                                         <tr>
                                             <?php
-                                            echo "<td>".$Tab[0]."</td>";    //ID
-                                            echo "<td>".$Tab[1]."</td>";    //Nom
-                                            echo "<td>".$Tab[2]."</td>";    //Faiblesse
-                                            echo "<td>".$Tab[3]."</td>";    //Element
+                                            echo "<td>".$Tab[0]."</td>";    //IDRelation
+                                            echo "<td>".$Tab[1]."</td>";    //IDArme
+                                            echo "<td>".$Tab[2]."</td>";    //IDMonstre
 
 
-                                            //pour la checkbox l'astuce est d'utiliser l'id du medecin comme id de checkox => id="Med_<?php echo $Tab[0]>"
+
                                             ?>
                                             <td>
-                                                <input type="checkbox" id="Monstre_<?php echo $Tab[0]?>" name="IDMonstre[]" value="<?php echo $Tab[0]?>">
+                                                <input type="checkbox" id="Monstre_<?php echo $Tab[0]?>" name="IDRelation[]" value="<?php echo $Tab[0]?>">
                                             </td>
                                         </tr>
                                         <?php
@@ -164,7 +155,7 @@ if(isset($_POST["MonstreDeletSubmit"])){
                                     ?>
                                 </table>
                                 <div class="form-example">
-                                    <input type="submit" name="MonstreDeletSubmit" value="Supprimer des Monstres">
+                                    <input type="submit" name="RelationDeletSubmit" value="Supprimer des Relation Armes/Monstre">
                                 </div>
                             <form>
                     <?php
@@ -176,8 +167,6 @@ if(isset($_POST["MonstreDeletSubmit"])){
 
 
     ?>
-
-
     </body>
     
 </html>
