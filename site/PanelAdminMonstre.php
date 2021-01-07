@@ -26,16 +26,16 @@
                     {
                         $BasePDO = new PDO("mysql:host=192.168.64.116; dbname=Maxence_Final_MH; charset=utf8", "root", "root");
 
-                        $MonstreNom = $_POST["MonstreNom"];
+                        $MonstreNom = $_POST["MonstreNom"]; //
                         $MonstreFaiblesse = $_POST["MonstreFaiblesse"];
-                        $MonstreElement = $_POST["MonstreElement"];
+                        $MonstreElement = $_POST["MonstreElement"]; //
 
 
                         //on continue que si la base n'est pas false
                         if($BasePDO){        
                                     echo "<p>Tentative de création de Monstre<p>";
                                     //creer la requête à partir de la génération php de phpMyAdmin
-                                    $req = "INSERT INTO `Monstre`( `Nom`, `Faiblesse`, `Element`) VALUES ('".$MonstreNom."','".$MonstreFaiblesse."','".$MonstreElement."')";
+                                    $req = "INSERT INTO `Monstre`( `Nom`, `Faiblesse`, `Element`) VALUES ('".$MonstreNom."','.$MonstreFaiblesse.','".$MonstreElement."')";
                                     $RequetStatement = $BasePDO->query($req);
                                     
                                     //on vérifie le code si le Statement n'est pas en false
@@ -45,7 +45,7 @@
                                         if(  $RequetStatement->errorCode()=='00000')
                                         {
                                             echo "Reussite de l'insertion : ";
-                                            echo "Vous avez entré les information a propos de ".$MonstreeNom." , un monstre faible à ".$MonstreFaiblesse." et ayant l'élément ".$MonstreElement.".";
+                                            echo "Vous avez entré les information a propos de ".$MonstreNom." , un monstre faible à ".$MonstreFaiblesse." et ayant l'élément ".$MonstreElement.".";
                                         }else{
                                             echo "<strong> Erreur </strong> N°".$RequetStatement->errorCode()." lors de l'insertion";
                                         }
@@ -103,21 +103,21 @@ if(isset($_POST["MonstreDeletSubmit"])){
 }
         ?>
 
-        <!-- Formulaire pour rentrer nouvele ralation (tout de même conseiller de le faire depuis la base SQL) -->
+        <!-- Formulaire pour rentrer nouvele relation (tout de même conseiller de le faire depuis la base SQL) -->
         <form action="" method="POST" class="form">
                 <div class="form">
                     <label for="MonstreType">Nom du Monstre : </label>
-                    <input type="text" name="MonstreType" id="MonstreNom" required>
+                    <input type="text" name="MonstreNom" id="MonstreNom" required>
                 </div>
 
                 <div class="form">
                     <label for="MonstreFaiblesse">Faiblesse du Monstre: </label>
-                    <input type="text" name="MonstreFaiblesse" id="MonstreFaiblesse" required>
-                </div>
+                    <input type="number" value ="1" min="1" max="5" name="MonstreFaiblesse" id="MonstreFaiblesse" required>
+                    (1 = Feu, 2 = Eau, 3 = Glace, 4 = Foudre, 5 = Dragon)                </div>
 
                 <div class="form">
                     <label for="MonstreElement">Element du Monstre: </label>
-                    <input type="text" name="MontreElement" id="MonstreElement" required>
+                    <input type="text" name="MonstreElement" id="MonstreElement" required>
                 </div>
 
 
