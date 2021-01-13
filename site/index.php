@@ -10,6 +10,12 @@
 </head>
 
 <body>
+    <?php
+        if(isset($_SESSION['Connect'])){
+            //Si session existe , alors on la détruit:
+            session_destroy();        
+        }
+    ?>
     <div id="MHW">
     <!-- Lien page Monster Hunter World -->
     <a href="Mhw.php"><img src="../Image/Jaquette/MHW.jpg"/>

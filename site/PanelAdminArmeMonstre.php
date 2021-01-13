@@ -1,3 +1,6 @@
+<?php
+    include "Login.php";
+?>
 <html>
     <head>
         <link rel="icon" href="../Image/icone.ico" />
@@ -9,6 +12,9 @@
         
         <?php
             include("MenuAdmin.php");
+
+            if($isconnect){ 
+
 
             if(isset($_POST["RelationSubmit"]))
             {
@@ -169,7 +175,9 @@ if(isset($_POST["RelationDeletSubmit"])){
 
 
 
-    ?>
+        } else {
+            echo "veuillez vous connecter";
+        } ?>    
     </body>
     
 </html>

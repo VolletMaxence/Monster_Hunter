@@ -7,7 +7,7 @@
                 <li><a href="index.php"><strong>Menu</strong></a></li>
                 <li><a href="Mhw.php"><strong>Monster Hunter World</strong></a></li>
                 <li><a href="mhr.php"><strong>Monster Hunter Rise</strong></a></li>
-                <li><a href="Login.php"><strong>Admin</strong></a></li>
+                <li><a href="PanelAdmin.php"><strong>Admin</strong></a></li>
             </ul>
         </li>
     </div>  
