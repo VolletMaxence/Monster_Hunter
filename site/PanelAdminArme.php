@@ -1,5 +1,5 @@
 <?php
-    include "Login.php";
+    require "Login.php";
 ?>
 <html>
     <head>
@@ -13,8 +13,19 @@
         <?php
             include("MenuAdmin.php");
 
-            if($isconnect){ 
+            if($_SESSION && $_SESSION['Connect'] ==true){ 
+                ?>
+                <form method=POST>
+                <input type="submit" name='Deco' value='Deconnection' >
+            </form>
+            
+            <?php
+                if(ISSET($_POST['Deco']))
+                {
+                    session_destroy();
 
+                }
+            
 
                 if(isset($_POST["ArmeSubmit"]))
                 {
@@ -185,6 +196,7 @@
                                 <form action ="" method="post">
                                     <table>
                                         <?php
+                                        //Le temps qu'il y a quelque chose en base :
                                         while($Tab=$RequetStatement->fetch()){
                                             ?>
                                             <tr>
@@ -223,6 +235,9 @@
         } else {
             echo "Veuillez vous connecter";
         } ?>
+
+
+
 
     </body>
     

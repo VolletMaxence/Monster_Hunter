@@ -5,9 +5,9 @@
             <ul>
             <!--Menu Admin pour une meilleur navigation-->
                 <li><a href="index.php"><strong>Menu
-                <?php
-                    session_destroy()
-                ?>
+                    <?php
+                        session_destroy()
+                    ?>
                 </strong></a></li>
                 <li><a href="PanelAdminArme.php"><strong>Arme</strong></a></li>
                 <li><a href="PanelAdminMonstre.php"><strong>Monstre</strong></a></li>

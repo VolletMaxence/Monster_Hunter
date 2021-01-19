@@ -1,5 +1,5 @@
 <?php
-    include "Login.php";
+    require "Login.php";
 ?>
 <html>
     <head>
@@ -13,7 +13,7 @@
         <?php
             include("MenuAdmin.php");
 
-            if($isconnect){ 
+            if($_SESSION && $_SESSION['Connect'] ==true){ 
 
 
             if(isset($_POST["RelationSubmit"]))

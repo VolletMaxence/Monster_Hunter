@@ -1,5 +1,5 @@
 <?php
-    include "Login.php";
+    require "Login.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -14,7 +14,7 @@
 
 <body>
     <?php
-        if($isconnect){ ?>
+        if($_SESSION && $_SESSION['Connect'] ==true){ ?>
             <!-- Lien Panel Admin Arme -->
             <div id="Arme">
                 <a href="PanelAdminArme.php"><img src="../Image/Admin/Arme.jpg"/>
@@ -33,14 +33,20 @@
                 <a href="PanelAdminArmeMonstre.php"><img src="../Image/Admin/AM.jpg"/>
                 </a>
             </div> 
-            <div id="Deconnection">
-                <a href="index.php" target="_blank"> <input type="button" style="width:500px" value="Déconnection et retour a l'acceuil"> 
-                <?php
-                    session_destroy()
-                ?>
-            </a>
-            </div>
+
+            <form method=POST>
+                <input type="submit" name='Deco' value='Deconnection' >
+            </form>
             
+            <?php
+                if(ISSET($_POST['Deco']))
+                {
+                    $_SESSION['Connect'] = false;
+                    session_destroy();
+                    
+
+                }
+            ?>
             <?php
         } else {
         } ?>

@@ -3,12 +3,12 @@
     <?php
         session_start();
 
-        $isconnect=false;
-
-        if(isset($_SESSION['Connect'])){
+        if($_SESSION && $_SESSION['Connect'] == true){
             //Si session existe :
-            $isconnect=$_SESSION['Connect'];
+            echo "Je suis co BG";
         }else{
+            
+
             ?>
                 <div id="container">
                 <!-- zone de connexion avec formulaire -->
