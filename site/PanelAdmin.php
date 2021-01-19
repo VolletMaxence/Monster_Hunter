@@ -43,8 +43,8 @@
                 {
                     $_SESSION['Connect'] = false;
                     session_destroy();
-                    
-
+                    //refresh pour déco
+                    header("Refresh:0");
                 }
             ?>
             <?php

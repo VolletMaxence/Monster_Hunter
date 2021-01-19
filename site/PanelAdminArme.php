@@ -20,13 +20,6 @@
             </form>
             
             <?php
-                if(ISSET($_POST['Deco']))
-                {
-                    session_destroy();
-
-                }
-            
-
                 if(isset($_POST["ArmeSubmit"]))
                 {
 
